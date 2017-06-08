@@ -10,6 +10,9 @@ const { resolve } = require('path');
 // Serve up static files form ../public
 app.use(express.static(resolve(__dirname, '..', 'public')))
 
+// Serve up api direction
+app.use('/api', require('./api.js'));
+
 // Serve up index.html on request
 app.get('/*', (req, res) => {
   res.sendFile(resolve(__dirname, '../public/index.html'));

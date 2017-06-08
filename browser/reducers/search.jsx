@@ -1,30 +1,24 @@
 const defaultState = {
-  searchValue: '',
-  filterValue: ''
+  searchCityName: ''
 };
 /* ----------------- REDUCERS -------------------- */
 
 export default function (state = defaultState, action) {
   switch (action.type) {
-    case CHANGE_VALUE:
-      return Object.assign({}, state, { searchValue: action.value, filterValue: action.value });
-    case SUBMIT_SEARCH:
-      return Object.assign({}, state, { searchValue: '' });
+    // updates state when user searchs by city name
+    case SEARCH_BY_CITY_NAME:
+      // Object.assign maintians immutiblity for redux
+      return Object.assign({}, state, { searchCityName: action.value });
     default: return state;
   }
 }
 
 /* ------------- ACTION TYPES ------------------- */
 
-const CHANGE_VALUE = 'CHANGE_VALUE';
-const SUBMIT_SEARCH = 'SUBMIT_SEARCH';
+const SEARCH_BY_CITY_NAME = 'SEARCH_BY_CITY_NAME';
 
 /* ------------- ACTION CREATORS ---------------- */
 
-export const changeSearchValue = value => {
-  return { type: CHANGE_VALUE, value: value };
-};
-
-export const submitSearch = () => {
-  return { type: SUBMIT_SEARCH };
+export const searchByCityName = value => {
+  return { type: SEARCH_BY_CITY_NAME, value: value };
 };
